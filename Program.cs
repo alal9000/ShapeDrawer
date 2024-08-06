@@ -11,11 +11,6 @@ namespace ShapeDrawer
 
             Drawing draw = new Drawing();
 
-            Point2D point = new Point2D();
-            point.X = 500;
-            point.Y = 500;
-
-
             do
             {
                 SplashKit.ProcessEvents(); // get user input 
@@ -26,13 +21,15 @@ namespace ShapeDrawer
                 // set shape position to be where user clicks
                 float userX = SplashKit.MouseX();
                 float userY = SplashKit.MouseY();
-                bool userMouseClick = SplashKit.MouseClicked(MouseButton.LeftButton);
+                bool userMouseClickLeft = SplashKit.MouseClicked(MouseButton.LeftButton);
+                bool userMouseClickRight = SplashKit.MouseClicked(MouseButton.RightButton);
 
-                
+                Point2D userMousePos = new Point2D();
+                userMousePos.X = SplashKit.MouseX();
+                userMousePos.Y = SplashKit.MouseY();
 
-                // other processing
-
-                if (userMouseClick)
+                // Add shape if left mouse button is clicked
+                if (userMouseClickLeft)
                 {
                     Shape s = new Shape();
                     s.X = userX;
@@ -41,22 +38,26 @@ namespace ShapeDrawer
                     draw.AddShape(s);
                 }
 
-                // change the shape color if user mouses over the shape and presses space
+                // Select shape if right mouse button is clicked
+                if (userMouseClickRight)
+                {
+                    draw.SelectShapesAt(userMousePos);
+                }
 
-                bool userSpaceBarPressed = SplashKit.KeyTyped(KeyCode.SpaceKey);
-                Point2D userMousePosition = SplashKit.MousePosition();
-                Color randomColor = SplashKit.RandomRGBColor(255);
+                // remove the shape if the user has selected it and pressed the delete key
+                bool userDeletePressed = SplashKit.KeyTyped(KeyCode.DeleteKey);
+                if (userDeletePressed)
+                {
+                    draw.RemoveSelectedShapes();
+                }
 
-
-
+                // Draw all shapes
+                draw.Draw();
 
                 // end processing
 
-
-
                 SplashKit.RefreshScreen(); // send the current screen to be drawn to GPU
             } while (!SplashKit.WindowCloseRequested("Shape Drawer"));
-
         }
     }
 }
