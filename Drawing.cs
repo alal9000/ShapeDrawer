@@ -74,7 +74,6 @@ namespace ShapeDrawer
 
         public void SelectShapesAt(Point2D pt, Shape shape)
         {
-
             foreach (Shape s in _shapes)
             {
                 if (s.IsAt(pt))
