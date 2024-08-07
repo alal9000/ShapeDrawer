@@ -63,12 +63,12 @@ public class Shape
 
     // methods
 
-    public void DrawOutline()
+    public virtual void DrawOutline()
     {
         SplashKit.DrawRectangle(Color.Black, _x - 2, _y - 2, _width + 4, _height + 4);
     }
 
-    public void Draw()
+    public virtual void Draw()
 	{
 		SplashKit.FillRectangle(_bgColor, _x, _y, _width, _height);
 

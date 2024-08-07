@@ -22,7 +22,7 @@ namespace ShapeDrawer
 
         public Drawing() : this(Color.White)
         {
-            // other steps could go here…
+            // pass
         }
 
         // properties
@@ -72,9 +72,8 @@ namespace ShapeDrawer
             }
         }
 
-        public void SelectShapesAt(Point2D pt, Shape shape)
+        public void SelectShapesAt(Point2D pt)
         {
-
             foreach (Shape s in _shapes)
             {
                 if (s.IsAt(pt))
@@ -88,8 +87,10 @@ namespace ShapeDrawer
             }
         }
 
-
-
+        public void RemoveSelectedShapes()
+        {
+            _shapes.RemoveAll(s => s.Selected);
+        }
 
 
     }

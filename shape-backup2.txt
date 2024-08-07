@@ -65,12 +65,17 @@ public class Shape
 
     public void DrawOutline()
     {
-       
+        SplashKit.DrawRectangle(Color.Black, _x - 2, _y - 2, _width + 4, _height + 4);
     }
 
     public void Draw()
 	{
 		SplashKit.FillRectangle(_bgColor, _x, _y, _width, _height);
+
+		if (_selected)
+		{
+			DrawOutline();
+		}
 	}
 
 	public Boolean IsAt(Point2D pt)

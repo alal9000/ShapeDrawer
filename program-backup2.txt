@@ -5,19 +5,11 @@ namespace ShapeDrawer
 {
     public class Program
     {
-        private enum ShapeKind
-        {
-            Rectangle,
-            Circle
-        }
-
         public static void Main()
         {
             new Window("Shape Drawer", 800, 600);
 
             Drawing draw = new Drawing();
-
-            ShapeKind kindToAdd = ShapeKind.Circle;
 
             do
             {
@@ -36,38 +28,14 @@ namespace ShapeDrawer
                 userMousePos.X = SplashKit.MouseX();
                 userMousePos.Y = SplashKit.MouseY();
 
-                bool rKeyPressed = SplashKit.KeyTyped(KeyCode.RKey);
-                bool cKeyPressed = SplashKit.KeyTyped(KeyCode.CKey);
-
-                if (rKeyPressed)
-                {
-                    kindToAdd = ShapeKind.Rectangle;
-                }
-                else if (cKeyPressed)
-                {
-                    kindToAdd = ShapeKind.Circle;
-                }
-
                 // Add shape if left mouse button is clicked
                 if (userMouseClickLeft)
                 {
-                    Shape newShape;
-                   
-                    if (kindToAdd == ShapeKind.Circle)
-                    {
-                        MyCircle newCircle = new MyCircle();
-                        newShape = newCircle;
-                    }
-                    else
-                    {
-                        MyRectangle newRect = new MyRectangle();
-                        newShape = newRect;
-                    }
+                    Shape s = new Shape();
+                    s.X = userX;
+                    s.Y = userY;
 
-                    newShape.X = userX;
-                    newShape.Y = userY;
-
-                    draw.AddShape(newShape);
+                    draw.AddShape(s);
                 }
 
                 // Select shape if right mouse button is clicked
