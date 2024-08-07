@@ -41,6 +41,8 @@ namespace ShapeDrawer
         public override void Draw()
         {
             SplashKit.FillRectangle(BgColor, X, Y, Width, Height);
+            if (Selected)
+                DrawOutline();
         }
 
         public override void DrawOutline()
@@ -50,7 +52,7 @@ namespace ShapeDrawer
 
         public override bool IsAt(Point2D pt)
         {
-            return (pt.X >= X && pt.X <= Y + Width) && (pt.Y >= Y && pt.Y <= Y + Height);
+            return (pt.X >= X && pt.X <= X + Width) && (pt.Y >= Y && pt.Y <= Y + Height);
         }
 
     }

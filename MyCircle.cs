@@ -29,12 +29,18 @@ namespace ShapeDrawer
         {
             if (Selected)
                 DrawOutline();
-            SplashKit.FillCircle(Color.Red, X, Y, _radius);
+            SplashKit.FillCircle(BgColor, X, Y, _radius);
         }
 
         public override void DrawOutline()
         {
             SplashKit.DrawCircle(Color.Black, X, Y, _radius + 2);
+        }
+
+        public override bool IsAt(Point2D pt)
+        {
+            double distance = SplashKit.PointPointDistance(pt, new Point2D { X = X, Y = Y });
+            return distance <= _radius;
         }
     }
 }

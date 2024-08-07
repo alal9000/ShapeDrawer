@@ -3,7 +3,7 @@ using System;
 using System.Drawing;
 using Color = SplashKitSDK.Color;
 
-public class Shape
+public abstract class Shape
 {
 	// fields
 
@@ -47,20 +47,11 @@ public class Shape
 	}
 
 
-    // methods
+	// methods
 
-    public virtual void DrawOutline()
-    {
-        
-    }
+	public abstract void DrawOutline();
 
-    public virtual void Draw()
-	{
+	public abstract void Draw();
 
-	}
-
-	public virtual Boolean IsAt(Point2D pt)
-	{
-		return false;
-	}
+	public abstract Boolean IsAt(Point2D pt);
 }
