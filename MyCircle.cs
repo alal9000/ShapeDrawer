@@ -11,9 +11,15 @@ namespace ShapeDrawer
     {
         private int _radius;
 
-        public MyCircle()
+        public MyCircle(Color clr, int radius) : base(clr)
         {
-            _radius = 50;
+            _radius = radius;
+        }
+
+
+
+        public MyCircle() : this(Color.Blue, 50)
+        {
 
         }
 
