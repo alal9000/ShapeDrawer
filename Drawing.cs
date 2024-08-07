@@ -93,8 +93,5 @@ namespace ShapeDrawer
         }
 
 
-
-
-
     }
 }
