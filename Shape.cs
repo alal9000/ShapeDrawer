@@ -15,7 +15,7 @@ public abstract class Shape
 	// constructor
 	public Shape(Color bgColor)
 	{
-		_bgColor = bgColor;
+		BgColor = bgColor;
 	}
 
 	// properties

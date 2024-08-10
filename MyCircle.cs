@@ -13,7 +13,7 @@ namespace ShapeDrawer
 
         public MyCircle(Color clr, int radius) : base(clr)
         {
-            _radius = radius;
+            Radius = radius;
         }
 
 

@@ -17,12 +17,12 @@ namespace ShapeDrawer
         public Drawing(Color background)
         {
             _shapes = new List<Shape>();
-            _background = background;
+            Background = background;
         }
 
         public Drawing() : this(Color.White)
         {
-            // pass
+            
         }
 
         // properties

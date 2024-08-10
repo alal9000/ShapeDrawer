@@ -8,7 +8,8 @@ namespace ShapeDrawer
         private enum ShapeKind
         {
             Rectangle,
-            Circle
+            Circle,
+            Line
         }
 
         public static void Main()
@@ -38,6 +39,7 @@ namespace ShapeDrawer
 
                 bool rKeyPressed = SplashKit.KeyTyped(KeyCode.RKey);
                 bool cKeyPressed = SplashKit.KeyTyped(KeyCode.CKey);
+                bool lKeyPressed = SplashKit.KeyTyped(KeyCode.LKey);
 
                 if (rKeyPressed)
                 {
@@ -46,6 +48,10 @@ namespace ShapeDrawer
                 else if (cKeyPressed)
                 {
                     kindToAdd = ShapeKind.Circle;
+                }
+                else if (lKeyPressed)
+                {
+                    kindToAdd = ShapeKind.Line;
                 }
 
                 // Add shape if left mouse button is clicked
@@ -58,10 +64,15 @@ namespace ShapeDrawer
                         MyCircle newCircle = new MyCircle();
                         newShape = newCircle;
                     }
-                    else
+                    else if (kindToAdd == ShapeKind.Rectangle)
                     {
                         MyRectangle newRect = new MyRectangle();
                         newShape = newRect;
+                    }
+                    else
+                    {
+                        MyLine newLine = new MyLine();
+                        newShape = newLine;
                     }
 
                     newShape.X = userX;

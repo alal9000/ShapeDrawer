@@ -9,25 +9,53 @@ namespace ShapeDrawer
 {
     public class MyLine : Shape
     {
+        // fields
         private int _length;
 
-        public MyLine(Color bgColor) : base(bgColor)
+        // constructors
+        public MyLine(Color clr, int length) : base(clr)
+        {
+            Length = length;
+        }
+
+        public MyLine() : this(Color.Red, 100)
         {
         }
 
+        // properties
+        public int Length { get => _length; set => _length = value; }
+
+        // methods
         public override void Draw()
         {
-            throw new NotImplementedException();
+
+            SplashKit.DrawLine(this.BgColor, X, Y, X + Length, Y);
+
+            SplashKit.FillCircle(Color.Yellow, X, Y, 5);
+            SplashKit.FillCircle(Color.Yellow, X + Length, Y, 5);
+
+            if (Selected)
+                DrawOutline();
         }
 
         public override void DrawOutline()
         {
-            throw new NotImplementedException();
+            const int circleRadius = 5;
+            const int outlineBuffer = 2;
+
+            float startX = X - circleRadius - outlineBuffer;
+            float startY = Y - circleRadius - outlineBuffer;
+            float endX = X + Length + circleRadius + outlineBuffer;
+            float endY = Y + circleRadius + outlineBuffer;
+
+            SplashKit.DrawRectangle(Color.Black, startX, startY, endX - startX, endY - startY);
         }
 
         public override bool IsAt(Point2D pt)
         {
-            throw new NotImplementedException();
+            const float thickness = 3.0f;
+
+            return (pt.X >= X - thickness && pt.X <= X + Length + thickness) && (pt.Y >= Y - thickness && pt.Y <= Y + thickness);
         }
     }
 }

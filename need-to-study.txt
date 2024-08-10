@@ -1,0 +1,7 @@
+-how the calculations are done to determine wether the mouse is within the bounds of the shape
+
+-similar to above, how the IsAt method is working and how this is being used to exec the working program
+
+-how inheritance and polymorphism is working
+
+-need to go through each line and really understand how this program is working

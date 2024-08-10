@@ -17234,7 +17234,8 @@ namespace SplashKitSDK
   {
     public Point2D StartPoint;
     public Point2D EndPoint;
-  }
+
+    }
 
   [ StructLayout( LayoutKind.Sequential, CharSet=CharSet.Ansi ) ]
   internal struct __sklib_quad
